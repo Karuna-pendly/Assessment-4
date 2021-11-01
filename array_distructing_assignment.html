@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>destructing assignment in ES6</title>
+</head>
+
+<body>
+    <script>
+        function getscores() {
+            return [70, 80, 90, 90, 100];
+        }
+        /*before es6
+    
+
+    let scores=getscores()
+    //to get individual scores
+    let x= scores[0]
+    let x= scores[1]
+    let x= scores[2]
+    console.log(x,y,z);
+
+    */
+        let [x, y, z] = getscores();
+        console.log(x, y, z);
+
+        //so lets use array destructing assignment with rest operator
+        let [a, b, ...args] = getscores();
+        console.log(a, b, args);
+
+        let c, d;
+        [c, d] = [10, 20];
+        console.log(c, d);
+
+        //setting the default values
+        function getItems() {
+            return [10, 20];
+        }
+
+        let items = getItems();
+        let thirditem = items[2] != undefined ? items[2] : 0;
+        console.log(thirdItem);
+
+        let [, , new_item = 0] = getItem;
+        console.log(new_item);
+
+        //assigning the default value
+        let u, v;
+        [u = 1, v = 2] = [10];
+        console.log(u);
+        console.log(v);
+
+        function getnewitems() {
+            return null;
+        }
+
+        let [e = 1, f = 2] = getnewitems();
+
+        //alternative way to solve this issue
+        let (g = 10, h = 20) = getnewitems() || [];
+        console.log(g);
+        console.log(h);
+
+        //nested array destructing
+        function getProfile() {
+            return [
+                'john',
+                'walker', ['purple', 'black', 'white']
+            ];
+
+        }
+
+        let [
+            firstname,
+            lastname, [
+                color1, color2, color3
+            ]
+        ] = getprofile();
+        console.log(color1, coloe2, color3);
+
+        //array desrtucting assignment applications
+        //1.swapping
+        let a = 10
+        b = 20;
+        [a, b] = [b, a]
+        console.log[a, b]
+
+        //2.function that return multiple values
+        function start(a, b) {
+            return [
+                a + b,
+                (a + b) / 2,
+                a - b
+            ]
+        }
+
+        let [sum, average, diff] = start(20, 10);
+        console.log(sum, average, diff);
+    </script>
+
+</body>
+
+</html>
